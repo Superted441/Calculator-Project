@@ -485,7 +485,7 @@ def basicbuttons(): # Basic Operations window
     Two.pack(side = LEFT)
     Three.pack(side = LEFT)
     Four.pack(side = LEFT)
-    Five.pack(side = LEFT)
+    Five.pack(side = L                  EFT)
     Six.pack(side = LEFT)
     Seven.pack(side = LEFT)
     Eight.pack(side = LEFT)
@@ -499,6 +499,18 @@ def basicbuttons(): # Basic Operations window
     Equals.pack(side = LEFT)
     GoBack.pack(side = RIGHT)
 
+
+def Power():
+
+    powerwin = Tk()
+
+    framep1 = Frame(powerwin)
+    framep2 = Frame(powerwin)
+    framep3 = Frame(powerwin)
+
+    powermaintext = 
+
+    powerwim.mainloop()
 
 def quitmain(): # quit feature for quit button
     root.destroy()
