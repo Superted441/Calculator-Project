@@ -500,30 +500,7 @@ def basicbuttons(): # Basic Operations window
     GoBack.pack(side = RIGHT)
 
 
-    Basic.mainloop()
-
-"""
-def ops(): Middle menu that was removed due to my laziness
-    opschoice = Tk()
-
-
-    def opsquit():
-        opschoice.destroy()
-
-
-    frameops = Frame(opschoice)
-    frameops.pack()
-
-    button2 = Button(frameops, text = "Buttons", command = basicbuttons, height = 3, width = 20)
-    button3 = Button(frameops, text = "Go Back", command = opsquit, height = 3, width = 10)
-
-    button3.pack(side = LEFT)
-    button2.pack(side = LEFT)
-
-    opschoice.mainloop()
-"""
-
-def Quitmainc(): # quit feature for quit button
+def quitmain(): # quit feature for quit button
     root.destroy()
 
 def apass(): # empty func for testing buttons and other features
@@ -538,8 +515,8 @@ frame0.pack()
 frame1.pack()
 frame2.pack()
 
-Textbox = Text(frame0, height = 1, state = NORMAL)
-Textbox.insert(INSERT, "Welcome Please make a Choice") # welcoming text
+Textbox = Text(frame0, height = 2, state = NORMAL)
+Textbox.insert(INSERT, "Welcome please make a choice as to which feature you will use today.") # welcoming text
 Textbox.pack()
 
 
@@ -555,7 +532,7 @@ Choice3.pack(side = LEFT)
 Choice4.pack(side = LEFT)
 
 
-Quitmain = Button(master = frame2, text = "Exit", command = Quitmainc, height = 2, width = 10) # quit button
+Quitmain = Button(master = frame2, text = "Exit", command = quitmain, height = 2, width = 10) # quit button
 Quitmain.pack()
 
 root.mainloop()
