@@ -485,7 +485,7 @@ def basicbuttons(): # Basic Operations window
     Two.pack(side = LEFT)
     Three.pack(side = LEFT)
     Four.pack(side = LEFT)
-    Five.pack(side = L                  EFT)
+    Five.pack(side = LEFT)
     Six.pack(side = LEFT)
     Seven.pack(side = LEFT)
     Eight.pack(side = LEFT)
@@ -504,13 +504,21 @@ def Power():
 
     powerwin = Tk()
 
+    def mainpowertextclear():
+        powermaintext.delete("1.0","end")
+
     framep1 = Frame(powerwin)
     framep2 = Frame(powerwin)
     framep3 = Frame(powerwin)
+    framep1.pack()
+    framep2.pack()
+    framep3.pack()
 
-    powermaintext = 
+    powermaintext = Text(framep1, height = 2, width = 52)
+    powermaintext.insert(INSERT, "In box one enter the number and in box two the power you would like then procede to hit calculate.")
+    powermaintext.pack()
 
-    powerwim.mainloop()
+    powerwin.mainloop()
 
 def quitmain(): # quit feature for quit button
     root.destroy()
@@ -533,7 +541,7 @@ Textbox.pack()
 
 
 Choice1 = Button(frame1, text = "Basic Operations", command = basicbuttons, height = 3, width = 20) # buttons to access different features
-Choice2 = Button(frame1, text = "X to the Power of Y", command = apass, height = 3, width = 20)
+Choice2 = Button(frame1, text = "X to the Power of Y", command = Power, height = 3, width = 20)
 Choice3 = Button(frame1, text = "Circle Operations", command = apass, height = 3, width = 20)
 Choice4 = Button(frame1, text = "The Square Root", command = apass, height = 3, width = 20)
 
