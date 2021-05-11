@@ -517,7 +517,12 @@ def Power():
     powermaintext = Text(framep1, height = 2, width = 52)
     powermaintext.insert(INSERT, "In box one enter the number and in box two the power you would like then procede to hit calculate.")
     powermaintext.pack()
-
+    insertone = Entry(framep2, height = 1, width = 10)
+    inserttwo = Entry(framep2, height = 1, width = 10)
+    Calculatebutton = Button(framep3, height = 1, width = 10)
+    insertone.pack() 
+    inserttwo.pack()
+    CalculateButton.pack()
     powerwin.mainloop()
 
 def quitmain(): # quit feature for quit button
