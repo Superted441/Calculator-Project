@@ -1,5 +1,4 @@
 from tkinter import *
-#from numpy import *
 
 
 
@@ -501,11 +500,34 @@ def basicbuttons(): # Basic Operations window
 
 
 def Power():
-
+        
     powerwin = Tk()
 
+    def powerquit():
+        powerwin.destroy()
+        
+    def getone():
+        global pone
+        pone = insertone.get()
+                     
+    def gettwo():
+        global ptwo
+        ptwo = inserttwo.get()
+        
+    def calculate():
+        try:
+            gettwo()
+            getone()
+            powerans = pow(pone, ptwo)
+            mainpowertextclear()
+            powermaintext.insert(INSERT,"{}".format(powerans))
+            powermaintext.pack()
+        else:
+            pass
+    
     def mainpowertextclear():
         powermaintext.delete("1.0","end")
+        
 
     framep1 = Frame(powerwin)
     framep2 = Frame(powerwin)
@@ -519,7 +541,7 @@ def Power():
     powermaintext.pack()
     insertone = Entry(framep2, height = 1, width = 10)
     inserttwo = Entry(framep2, height = 1, width = 10)
-    Calculatebutton = Button(framep3, height = 1, width = 10)
+    Calculatebutton = Button(framep3, command = calculate, height = 1, width = 10)
     insertone.pack() 
     inserttwo.pack()
     CalculateButton.pack()
