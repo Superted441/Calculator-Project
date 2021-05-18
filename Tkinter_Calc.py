@@ -509,10 +509,12 @@ def Power():
     def getone():
         global pone
         pone = insertone.get()
+        pone = float(pone)
                      
     def gettwo():
         global ptwo
         ptwo = inserttwo.get()
+        ptwo = float(ptwo)
         
     def calculate():
         try:
@@ -522,7 +524,7 @@ def Power():
             mainpowertextclear()
             powermaintext.insert(INSERT,"{}".format(powerans))
             powermaintext.pack()
-        else:
+        except:
             pass
     
     def mainpowertextclear():
@@ -538,13 +540,15 @@ def Power():
 
     powermaintext = Text(framep1, height = 2, width = 52)
     powermaintext.insert(INSERT, "In box one enter the number and in box two the power you would like then procede to hit calculate.")
-    powermaintext.pack()
+    powermaintext.pack(side = LEFT)
     insertone = Entry(framep2, height = 1, width = 10)
     inserttwo = Entry(framep2, height = 1, width = 10)
     Calculatebutton = Button(framep3, command = calculate, height = 1, width = 10)
     insertone.pack() 
     inserttwo.pack()
     CalculateButton.pack()
+    gobackpower = Button(framep1, command = powerquit, text = "Go Back", height = 2, width = 10)
+    gobackpower.pack(side = LEFT)
     powerwin.mainloop()
 
 def quitmain(): # quit feature for quit button
