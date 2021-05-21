@@ -551,6 +551,36 @@ def Power():
     gobackpower.pack(side = LEFT)
     powerwin.mainloop()
 
+
+def circleops():
+    circlewin = Tk()
+
+    circleframe1 = Frame(circlewin)
+    circleframe2 = Frame(circlewin)
+    circleframe3 = Frame(circlewin)
+
+    CircleText = Text(circleframe1, height = 2, width = 52)
+    CircleText.insert(INSERT, "In box one enter the diameter and in box two the angle or leave it empty for a full circle. Procede to click the button relating to the Calculation you would like to do.")
+    CircleText.pack(side = LEFT)
+
+    insertonecircle = Entry(circleframe2, width = 10)
+    inserttwocircle = Entry(circleframe2, width = 10)
+    insertonecircle.pack(side = LEFT)
+    inserttwocircle.pack(side = LEFT)
+
+    Area = Button(circleframe3, command = area, text = "Area", height = 2, width = 10)
+    Diameter = Button(circleframe3, command = area, text = "Area", height = 2, width = 10)
+    Area.pack(side = LEFT)
+    Diameter.pack(side = LEFT)
+    reverse_ops = Button(circleframe3, command = uno_reverse, text = 'Reverse ops', height = 2, width = 10)
+    reverse_ops.pack(side = LEFT)
+
+
+    circlewin.mainloop()
+
+def Squareroot():
+    pass
+
 def quitmain(): # quit feature for quit button
     root.destroy()
 
@@ -573,7 +603,7 @@ Textbox.pack()
 
 Choice1 = Button(frame1, text = "Basic Operations", command = basicbuttons, height = 3, width = 20) # buttons to access different features
 Choice2 = Button(frame1, text = "X to the Power of Y", command = Power, height = 3, width = 20)
-Choice3 = Button(frame1, text = "Circle Operations", command = apass, height = 3, width = 20)
+Choice3 = Button(frame1, text = "Circle Operations", command = circleops, height = 3, width = 20)
 Choice4 = Button(frame1, text = "The Square Root", command = apass, height = 3, width = 20)
 
 
