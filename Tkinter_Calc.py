@@ -500,22 +500,22 @@ def basicbuttons(): # Basic Operations window
 
 
 def Power():
-        
+
     powerwin = Tk()
 
     def powerquit():
         powerwin.destroy()
-        
+
     def getone():
         global pone
         pone = insertone.get()
         pone = float(pone)
-                     
+
     def gettwo():
         global ptwo
         ptwo = inserttwo.get()
         ptwo = float(ptwo)
-        
+
     def calculate():
         try:
             gettwo()
@@ -526,10 +526,10 @@ def Power():
             powermaintext.pack()
         except:
             pass
-    
+
     def mainpowertextclear():
         powermaintext.delete("1.0","end")
-        
+
 
     framep1 = Frame(powerwin)
     framep2 = Frame(powerwin)
@@ -541,11 +541,11 @@ def Power():
     powermaintext = Text(framep1, height = 2, width = 52)
     powermaintext.insert(INSERT, "In box one enter the number and in box two the power you would like then procede to hit calculate.")
     powermaintext.pack(side = LEFT)
-    insertone = Entry(framep2, height = 1, width = 10)
-    inserttwo = Entry(framep2, height = 1, width = 10)
-    Calculatebutton = Button(framep3, command = calculate, height = 1, width = 10)
-    insertone.pack() 
-    inserttwo.pack()
+    insertone = Entry(framep2, width = 10)
+    inserttwo = Entry(framep2, width = 10)
+    CalculateButton = Button(framep3, command = calculate, text= "Calculate", height = 1, width = 10)
+    insertone.pack(side = LEFT)
+    inserttwo.pack(side = LEFT)
     CalculateButton.pack()
     gobackpower = Button(framep1, command = powerquit, text = "Go Back", height = 2, width = 10)
     gobackpower.pack(side = LEFT)
@@ -566,7 +566,7 @@ frame0.pack()
 frame1.pack()
 frame2.pack()
 
-Textbox = Text(frame0, height = 2, state = NORMAL)
+Textbox = Text(frame0, height = 1, state = NORMAL)
 Textbox.insert(INSERT, "Welcome please make a choice as to which feature you will use today.") # welcoming text
 Textbox.pack()
 
