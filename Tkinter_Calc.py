@@ -45,7 +45,7 @@ def basicbuttons(): # Basic Operations window
     Textbox1.pack(side = LEFT)
 
     def clearTextInput():
-        Textbox1.delete("1.0","end")
+        Textbox1.delete('1.0', END)
 
     def ONE():
         global d1
@@ -448,11 +448,11 @@ def basicbuttons(): # Basic Operations window
             if function == "divide":
                 k = y / x
             elif function == "add":
-                k = y + a
+                k = y + x
             elif function == "minus":
                 k = y - x
             elif function == "times":
-                k= y * x
+                k = y * x
             else:
                 pass
             clearTextInput()
@@ -558,8 +558,35 @@ def circleops():
     circleframe1 = Frame(circlewin)
     circleframe2 = Frame(circlewin)
     circleframe3 = Frame(circlewin)
+    circleframe1.pack()
+    circleframe2.pack()
+    circleframe3.pack()
 
-    CircleText = Text(circleframe1, height = 2, width = 52)
+    
+    def clearcircleops():
+        CircleText.delete('1.0', END)
+        CircleText.pack
+
+    def get_boxes():
+        global diameter
+        global angle
+        diameter = insertonecircle.get()
+        angle = inserttwocircle.get()
+        diameter = float(diameter)
+        if angle == "": angle = 360
+        else: angle = float(angle)
+
+    def area():
+        get_boxes()
+        pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+        pidiameter = pi * diameter
+        angle1 = angle / 360 
+        area1 = pidiameter *angle1
+        clearcircleops()
+        CircleText.insert(INSERT, "{}".format(area1))
+        CircleText.pack()
+        
+    CircleText = Text(circleframe1, height = 2, width = 72)
     CircleText.insert(INSERT, "In box one enter the diameter and in box two the angle or leave it empty for a full circle. Procede to click the button relating to the Calculation you would like to do.")
     CircleText.pack(side = LEFT)
 
@@ -569,10 +596,10 @@ def circleops():
     inserttwocircle.pack(side = LEFT)
 
     Area = Button(circleframe3, command = area, text = "Area", height = 2, width = 10)
-    Diameter = Button(circleframe3, command = area, text = "Area", height = 2, width = 10)
+    Diameter = Button(circleframe3, command = apass, text = "Diameter", height = 2, width = 10)
     Area.pack(side = LEFT)
     Diameter.pack(side = LEFT)
-    reverse_ops = Button(circleframe3, command = uno_reverse, text = 'Reverse ops', height = 2, width = 10)
+    reverse_ops = Button(circleframe3, command = apass, text = 'Reverse ops', height = 2, width = 10) # Uno_Reverse
     reverse_ops.pack(side = LEFT)
 
 
