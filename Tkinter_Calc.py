@@ -45,7 +45,7 @@ def basicbuttons(): # Basic Operations window
     Textbox1.pack(side = LEFT)
 
     def clearTextInput():
-        Textbox1.delete("1.0","end")
+        Textbox1.delete('1.0', END)
 
     def ONE():
         global d1
@@ -448,11 +448,11 @@ def basicbuttons(): # Basic Operations window
             if function == "divide":
                 k = y / x
             elif function == "add":
-                k = y + a
+                k = y + x
             elif function == "minus":
                 k = y - x
             elif function == "times":
-                k= y * x
+                k = y * x
             else:
                 pass
             clearTextInput()
@@ -561,34 +561,28 @@ def circleops():
         CircleText.pack()
 
 
+    def get_boxes():
+        global diameter
+        global angle
+        diameter = insertonecircle.get()
+        angle = inserttwocircle.get()
+        diameter = float(diameter)
+        if angle == "":
+            angle = 360
+        else:
+            angle = float(angle)
+
+
     def uno_reverse():
         pass
 
 
-    def box_get():
+    def diameter():
         try:
-            global circle1
-            global circle2
-            circle1 = insertonecircle.get()
-            circle1 = float(circle1)
-            try:
-                circle2 = inserttwocircle.get()
-                circle2 = float(circle2)#
-            except:
-                circle2 = 360
-        except:
-            pass
-
-
-    def area():
-        pass
-
-
-    def Diameter():
-        try:
-            box_get()
-            circle3 = circle2 / 360
-            circle4 = circle1 * math.pi
+            pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+            get_boxes()
+            circle3 = angle / 360
+            circle4 = diameter * pi
             ans = circle4 * circle3
             print("1")
             circletextclear()
@@ -600,6 +594,19 @@ def circleops():
             pass
 
 
+    def area():
+        try:
+            get_boxes()
+            pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+            pidiameter = pi * diameter
+            angle1 = angle / 360
+            area1 = pidiameter * angle1
+            circletextclear()
+            CircleText.insert(INSERT, "{}".format(area1))
+            CircleText.pack()
+        except:
+            pass
+
     circleframe1 = Frame(circlewin)
     circleframe2 = Frame(circlewin)
     circleframe3 = Frame(circlewin)
@@ -607,8 +614,8 @@ def circleops():
     circleframe2.pack()
     circleframe3.pack()
 
-    global CircleText
-    CircleText = Text(circleframe1, height = 3, width = 66)
+
+    CircleText = Text(circleframe1, height = 2, width = 72)
     CircleText.insert(INSERT, "In box one enter the diameter and in box two the angle or leave it empty for a full circle. Procede to click the button relating to the Calculation you would like to do.")
     CircleText.pack(side = LEFT)
 
@@ -617,11 +624,11 @@ def circleops():
     insertonecircle.pack(side = LEFT)
     inserttwocircle.pack(side = LEFT)
 
-    Area = Button(circleframe3, command = apass, text = "Area", height = 2, width = 10)
-    Diameter = Button(circleframe3, command = Diameter, text = "Diameter", height = 2, width = 10)
+    Area = Button(circleframe3, command = area, text = "Area", height = 2, width = 10)
+    Diameter = Button(circleframe3, command = diameter, text = "Diameter", height = 2, width = 10)
+    reverse_ops = Button(circleframe3, command = apass, text = 'Reverse ops', height = 2, width = 10) # Uno_Reverse
     Area.pack(side = LEFT)
     Diameter.pack(side = LEFT)
-    reverse_ops = Button(circleframe3, command = apass, text = 'Reverse ops', height = 2, width = 10)
     reverse_ops.pack(side = LEFT)
 
 
