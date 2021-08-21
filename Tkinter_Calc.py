@@ -1,5 +1,5 @@
 from tkinter import *
-
+from numpy import *
 
 
 root = Tk()
@@ -557,16 +557,16 @@ def circleops():
 
 
     def circletextclear():
-        CircleText.delete("1.0","end")
+        CircleText.delete("1.0", END)
         CircleText.pack()
 
 
     def get_boxes():
-        global diameter
+        global diameter1
         global angle
-        diameter = insertonecircle.get()
+        diameter1 = insertonecircle.get()
         angle = inserttwocircle.get()
-        diameter = float(diameter)
+        diameter1 = float(diameter1)
         if angle == "":
             angle = 360
         else:
@@ -578,34 +578,32 @@ def circleops():
 
 
     def diameter():
-        try:
-            pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
-            get_boxes()
-            circle3 = angle / 360
-            circle4 = diameter * pi
-            ans = circle4 * circle3
-            print("1")
-            circletextclear()
-            print("1")
-            CircleText.insert(INSERT, "{}".format(ans))
-            print("1")
-            CircleText.pack()
-        except:
-            pass
+        pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+        get_boxes()
+        circle3 = angle / 360
+        circle4 = diameter1 * pi
+        ans = circle4 * circle3
+        print("1")
+        circletextclear()
+        print("1")
+        CircleText.insert(INSERT, "{}".format(ans))
+        print("1")
+        CircleText.pack()
+
 
 
     def area():
-        try:
-            get_boxes()
-            pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
-            pidiameter = pi * diameter
-            angle1 = angle / 360
-            area1 = pidiameter * angle1
-            circletextclear()
-            CircleText.insert(INSERT, "{}".format(area1))
-            CircleText.pack()
-        except:
-            pass
+        get_boxes()
+        pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+        diameter3 = diameter1 / 2
+        diameter2 = diameter3 * diameter3
+        pidiameter = pi * diameter2
+        angle1 = angle / 360
+        area1 = pidiameter * angle1
+        circletextclear()
+        CircleText.insert(INSERT, "{}".format(area1))
+        CircleText.pack()
+
 
     circleframe1 = Frame(circlewin)
     circleframe2 = Frame(circlewin)
@@ -616,7 +614,7 @@ def circleops():
 
 
     CircleText = Text(circleframe1, height = 2, width = 72)
-    CircleText.insert(INSERT, "In box one enter the diameter and in box two the angle or leave it empty for a full circle. Procede to click the button relating to the Calculation you would like to do.")
+    CircleText.insert(INSERT, "In box one enter the diameter(for the area) or circumference(for the diameter) and in box two the angle or leave it empty for a full circle. Procede to click the button relating to the Calculation you would like to do.")
     CircleText.pack(side = LEFT)
 
     insertonecircle = Entry(circleframe2, width = 10)
@@ -651,6 +649,7 @@ frame2 = Frame(root)
 frame0.pack()
 frame1.pack()
 frame2.pack()
+
 
 Textbox = Text(frame0, height = 1, state = NORMAL)
 Textbox.insert(INSERT, "Welcome please make a choice as to which feature you will use today.") # welcoming text
