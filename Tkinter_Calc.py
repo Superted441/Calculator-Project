@@ -1,6 +1,6 @@
 from tkinter import *
-from numpy import *
-
+from playsound import playsound
+from math import sqrt
 
 root = Tk()
 
@@ -498,7 +498,6 @@ def basicbuttons(): # Basic Operations window
     Equals.pack(side = LEFT)
     GoBack.pack(side = RIGHT)
 
-
 def Power():
 
     powerwin = Tk()
@@ -551,7 +550,6 @@ def Power():
     gobackpower.pack(side = LEFT)
     powerwin.mainloop()
 
-
 def circleops():
     circlewin = Tk()
 
@@ -581,13 +579,10 @@ def circleops():
         pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
         get_boxes()
         circle3 = angle / 360
-        circle4 = diameter1 * pi
-        ans = circle4 * circle3
-        print("1")
+        piangle = circle3 * pi
+        ans = diameter1 / piangle
         circletextclear()
-        print("1")
         CircleText.insert(INSERT, "{}".format(ans))
-        print("1")
         CircleText.pack()
 
 
@@ -614,7 +609,7 @@ def circleops():
 
 
     CircleText = Text(circleframe1, height = 2, width = 72)
-    CircleText.insert(INSERT, "In box one enter the diameter(for the area) or circumference(for the diameter) and in box two the angle or leave it empty for a full circle. Procede to click the button relating to the Calculation you would like to do.")
+    CircleText.insert(INSERT, "In box one enter the diameter(for the area) or circumference(for the diameter no angle allowed) and in box two the angle or leave it empty for a full circle. Procede to click the button relating to the Calculation you would like to do.")
     CircleText.pack(side = LEFT)
 
     insertonecircle = Entry(circleframe2, width = 10)
@@ -633,12 +628,53 @@ def circleops():
     circlewin.mainloop()
 
 def Squareroot():
-    pass
+    squarerootwin = Tk()
+
+
+    def squarerootwindestroy():
+        squarerootwin.destroy()
+
+    def squarerootget():
+        global square
+        try:
+            square = float(squarerootentry.get())
+        except:
+            square = 0
+
+    def solve():
+        global squarerootanswer
+        squarerootget()
+        squarerootanswer = sqrt(square)
+        squareroottext.delete("1.0", END)
+        squareroottext.insert(INSERT, "{}".format(squarerootanswer))
+        squareroottext.pack()
+
+    squarerootframe1 = Frame(squarerootwin)
+    squarerootframe2 = Frame(squarerootwin)
+    squarerootframe3 = Frame(squarerootwin)
+    squarerootframe1.pack()
+    squarerootframe2.pack()
+    squarerootframe3.pack()
+
+    Squarerootbutton = Button(squarerootframe3, command = solve, text = "Solve", height = 2, width = 10)
+    squarerootexit = Button(squarerootframe1, command = squarerootwindestroy, text = "Exit", height = 2, width = 10)
+    squareroottext = Text(squarerootframe1, height = 2, width = 42)
+    squareroottext.insert(INSERT, "Please enter the number you would like to know the root of.")
+    squarerootentry = Entry(squarerootframe2, width = 10)
+    squareroottext.pack(side = LEFT)
+    squarerootexit.pack(side = LEFT)
+    squarerootentry.pack()
+    Squarerootbutton.pack()
+
+
+
+    squarerootwin.mainloop()
+
 
 def quitmain(): # quit feature for quit button
     root.destroy()
 
-def apass(): # empty func for testing buttons and other features
+def apass(): # empty func for testing buttons
     pass
 
 frame0 = Frame(root) # Frames to hold button positions
@@ -652,14 +688,14 @@ frame2.pack()
 
 
 Textbox = Text(frame0, height = 1, state = NORMAL)
-Textbox.insert(INSERT, "Welcome please make a choice as to which feature you will use today.") # welcoming text
+Textbox.insert(INSERT, "Welcome please make a choice as to which feature you will use today.") # Welcome text
 Textbox.pack()
 
 
 Choice1 = Button(frame1, text = "Basic Operations", command = basicbuttons, height = 3, width = 20) # buttons to access different features
 Choice2 = Button(frame1, text = "X to the Power of Y", command = Power, height = 3, width = 20)
 Choice3 = Button(frame1, text = "Circle Operations", command = circleops, height = 3, width = 20)
-Choice4 = Button(frame1, text = "The Square Root", command = apass, height = 3, width = 20)
+Choice4 = Button(frame1, text = "The Square Root", command = Squareroot, height = 3, width = 20)
 
 
 Choice1.pack(side = LEFT)
